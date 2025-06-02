@@ -25,3 +25,5 @@ and change it to the path where your images or GIFs are stored.
 ---
 
 This allows the script to access your media files and run the slideshow correctly.
+
+use ctrl + alt + S for run
