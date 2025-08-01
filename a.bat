@@ -1,2 +1,2 @@
 @echo off
-powershell.exe -NoLogo -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Users\Taylon\Desktop\slide_show\ShowImageAsScreensaver.ps1"
+powershell.exe -NoLogo -ExecutionPolicy Bypass -File "C:\Users\taylo\Desktop\github\win-fast-slider-main\ShowImageAsScreensaver.ps1" 
