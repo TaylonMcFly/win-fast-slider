@@ -1,3 +1,9 @@
+
+---
+
+Full translated and cleaned PowerShell script with English comments:
+
+```powershell
 Add-Type -AssemblyName PresentationFramework, WindowsBase, PresentationCore
 
 $window = New-Object System.Windows.Window
@@ -11,23 +17,23 @@ $image = New-Object System.Windows.Controls.Image
 $image.Stretch = 'UniformToFill'
 $window.Content = $image
 
-# Папка с изображениями (замени на свою)
+# Folder with images (change to your folder)
 $folder = "C:\Users\Taylon\Desktop\slide_show"
 
-# Берём все файлы с расширениями изображений и гифок
+# Get all image files extensions
 $extensions = '*.jpg', '*.JPG', '*.jpeg', '*.JPEG', '*.png', '*.PNG', '*.gif', '*.GIF', '*.bmp', '*.BMP', '*.tiff', '*.TIFF', '*.ico', '*.ICO', '*.webp', '*.WEBP'
 $files = Get-ChildItem -Path $folder -File -Recurse | Where-Object {
     $_.Extension -match '\.(jpg|jpeg|png|gif|bmp|tiff|ico|webp)$'
 } | Sort-Object Name
 
 if ($files.Count -eq 0) {
-    Write-Error "В папке '$folder' не найдено изображений."
+    Write-Error "No images found in folder '$folder'."
     exit
 }
 
 $index = 0
 
-# Обработчики выхода
+# Close window on key press or mouse click
 $window.Add_KeyDown({ $window.Close() })
 $window.Add_MouseDown({ $window.Close() })
 
@@ -46,12 +52,12 @@ function ShowNextImage {
         $image.Source = $bitmap
     }
     catch {
-        # Если ошибка с загрузкой — просто пропускаем это изображение и идём дальше
+        # If loading error occurs, skip this image and go to next
         ShowNextImage
     }
 }
 
-# Показываем первое изображение вручную (индекс -1, чтобы первый вызов ShowNextImage установил 0)
+# Show first image manually (index -1 so first call sets index 0)
 $global:index = -1
 ShowNextImage
 
