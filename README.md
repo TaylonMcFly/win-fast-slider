@@ -1,29 +1,58 @@
-# win-fast-slider
-just a slider for just a windows
-# Windows PowerShell Image Slideshow Screensaver
+# ShowImageAsScreensaver
 
-This script runs an image or GIF slideshow as a screensaver on Windows using PowerShell.
-
-## Usage
-
-1. In the `a.bat` file, change the following line:
-
-powershell.exe -NoLogo -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Users\Taylon\Desktop\slide_show\ShowImageAsScreensaver.ps1"
-
-to
-powershell.exe -NoLogo -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Users\YourPcName\Desktop\slide_show\ShowImageAsScreensaver.ps1"
-where "\YourPcName\" change to your windows operation system user name
-
-Replace `YourPcName` with your actual Windows user account name.
-
-2. In the `ShowImageAsScreensaver.ps1` file, locate the line:
-$folder = "C:\Users\Taylon\Desktop\slide_show"
-
-
-and change it to the path where your images or GIFs are stored.
+This PowerShell script creates a fullscreen window that cyclically displays images from a specified folder as a slideshow (screensaver).
 
 ---
 
-This allows the script to access your media files and run the slideshow correctly.
+## What to Configure
 
-use ctrl + alt + S for run
+1. **Path to the images folder**
+
+   In the script, find this line:
+
+   `$folder = "C:\Users\Taylon\Desktop\slide_show"`
+
+   Replace the path with the folder where your images are stored.
+
+2. **Image change interval**
+
+   By default, it is set to 5 seconds:
+
+   `$timer.Interval = [TimeSpan]::FromSeconds(5)`
+
+   Change the number 5 to the desired number of seconds.
+
+3. **Path to the script in the batch file**
+
+   Your batch file command:
+
+   `powershell.exe -NoLogo -ExecutionPolicy Bypass -File "C:\Users\taylo\Desktop\github\win-fast-slider-main\ShowImageAsScreensaver.ps1"`
+
+   Make sure the path to the .ps1 file is correct.
+
+---
+
+## How to Create a Shortcut and Assign a Hotkey (e.g., Ctrl+S)
+
+1. Create a shortcut to your `.bat` file (for example, `a.bat`):
+
+   - Right-click on `a.bat` → Create shortcut.
+   - Rename the shortcut, for example, `ShowImageShortcut.lnk`.
+
+2. Assign a hotkey:
+
+   - Right-click the shortcut → Properties.
+   - In the Shortcut key field, assign a hotkey, for example, `Ctrl + Alt + S`.
+
+     > Note: Windows requires Ctrl+Alt+<key> combination; single Ctrl+S alone is not allowed.
+
+3. Place the shortcut where convenient (e.g., Desktop).
+
+4. Now pressing `Ctrl+Alt+S` will launch your batch file, which runs the PowerShell script.
+
+---
+
+## Additional Notes
+
+- You can pin the shortcut to Taskbar or Start Menu for easier access.
+- To run the script silently without opening a console window, you can modify the PowerShell launch command with `-WindowStyle Hidden` or create a shortcut directly to the `.ps1` file using PowerShell.
